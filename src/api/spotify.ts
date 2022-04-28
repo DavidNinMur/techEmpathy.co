@@ -1,5 +1,6 @@
 export const getAuth = (): Promise<SpotifyAuthResponse> => {
-  const BASE64_ENCODED_AUTH_CODE = `${process.env.VUE_APP_CLIENT_ID}:${process.env.VUE_APP_CLIENT_SECRET}`;
+  const AUTH_CODE_STR = `${process.env.VUE_APP_CLIENT_ID}:${process.env.VUE_APP_CLIENT_SECRET}`;
+  const BASE64_ENCODED_AUTH_CODE = window.btoa(AUTH_CODE_STR);
 
   return fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
