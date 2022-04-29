@@ -11,6 +11,18 @@ export default createStore<StoreState>({
       artists: [],
       albums: [],
       tracks: [],
+      searchSuggestionList: [
+        "Drake",
+        "Ed Sheeran",
+        "Bad Bunny",
+        "The Weekend",
+        "Ariana Grande",
+        "Justin Bieber",
+        "Post Malone",
+        "Eminem",
+        "Taylor Swift",
+        "BTS",
+      ], //fake endpoint to know the most listen artist!
     };
   },
   getters: {},
@@ -60,6 +72,7 @@ export interface StoreState {
   artists: Artist[];
   albums: Album[];
   tracks: Track[];
+  searchSuggestionList: Array<string>;
 }
 
 export interface AuthToken {
