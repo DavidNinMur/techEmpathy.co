@@ -1,0 +1,23 @@
+.search-box {
+  width: 300px;
+  margin: auto;
+}
+
+.search-box__input {
+  width: 100%;
+  padding: 2%;
+  border-radius: 15px;
+  padding-left: 25px;
+  background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat scroll left center;
+  background-size: 20px;
+  background-color: white;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
+  background-size: contain;
+  opacity: 1;
+}
