@@ -1,6 +1,9 @@
 <template>
   <section>
-    <h1>Artist</h1>
+    <div class="display-flex">
+      <button @click="redirectToHome()">Go Back</button>
+      <h1>Artist</h1>
+    </div>
     <img
       src="https://i.scdn.co/image/b040846ceba13c3e9c125d68389491094e7f2982"
       alt="Queen artist"
@@ -87,9 +90,26 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: "ArtistDetailView",
   components: {},
+  setup() {
+    const router = useRouter();
+
+    const redirectToHome = () => {
+      router.push("/");
+    };
+
+    return { redirectToHome };
+  },
 });
 </script>
+
+<style lang="scss" scoped>
+.display-flex {
+  display: flex;
+  justify-content: center;
+}
+</style>

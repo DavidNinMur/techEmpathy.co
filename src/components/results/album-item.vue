@@ -1,5 +1,5 @@
 <template>
-  <article class="album-item">
+  <article class="album-item" @click="redirectToDetail()">
     <span class="album-item__kind">Album</span>
     <header class="album-item__header">
       <img
@@ -15,6 +15,8 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
+import { useRouter } from "vue-router";
+
 import { Album } from "@/store";
 
 export default defineComponent({
@@ -24,6 +26,15 @@ export default defineComponent({
       type: Object as PropType<Album>,
       required: true,
     },
+  },
+  setup() {
+    const router = useRouter();
+
+    const redirectToDetail = () => {
+      router.push("/artist-detail");
+    };
+
+    return { redirectToDetail };
   },
 });
 </script>
