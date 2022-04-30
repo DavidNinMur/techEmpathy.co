@@ -1,5 +1,5 @@
 <div class="search-box">
-  <input list="recomended-searches" class="search-box__input" type="search" v-model="searchByUserStr" :placeholder="placeholderStr" @input="onQueryChange()" />
+  <input list="recomended-searches" class="search-box__input" type="search" v-model="searchByUserRefStr" :placeholder="placeholderRefStr" @input="onQueryChange()" />
   <datalist id="recomended-searches">
     <option value=""></option>
     <option v-for="artist in searchSuggestionList" :key="artist" :value="artist">{{ artist }}</option>
