@@ -33,6 +33,18 @@ export const search = (
   ).then(parseResponse);
 };
 
+export const getAlbumFromArtist = (
+  token: string,
+  query: string
+): Promise<SpotifyApi.SearchResponse> => {
+  return fetch(`https://api.spotify.com/v1/artists/${query}/albums`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(parseResponse);
+};
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function parseResponse(response: Response): Promise<any> {
   if (!response.ok) throw Error(`RequestStatus: ${response.status}`);

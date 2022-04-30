@@ -1,5 +1,5 @@
 <template>
-  <article class="artist-item">
+  <article class="artist-item" @click="redirectToDetail()">
     <span class="artist-item__kind">Artist</span>
     <header class="artist-item__header">
       <img
@@ -14,7 +14,12 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
+import { useRouter } from "vue-router";
+
+import store from "@/store";
 import { Artist } from "@/store";
+
+import { getAlbumFromArtist } from "@/api/spotify";
 
 export default defineComponent({
   name: "artist-item",
@@ -23,6 +28,33 @@ export default defineComponent({
       type: Object as PropType<Artist>,
       required: true,
     },
+  },
+  setup(props, { emit }) {
+    const router = useRouter();
+    const redirectToDetail = async () => {
+      await setArtistSelected();
+      router.push("/artist-detail");
+    };
+
+    const setArtistSelected = async () => {
+      const artistSelectedObj = JSON.parse(JSON.stringify(props.item));
+      artistSelectedObj["albums"] = await setAlbumFromArtistSelected(
+        artistSelectedObj
+      );
+
+      store.commit("setArtistDetailSelected", artistSelectedObj);
+    };
+
+    const setAlbumFromArtistSelected = async (artistSelectedObj: any) => {
+      const response = await getAlbumFromArtist(
+        store.state.token.value,
+        artistSelectedObj.id
+      );
+      const allAlbumsByUserSearchObj = JSON.parse(JSON.stringify(response));
+      return allAlbumsByUserSearchObj.items;
+    };
+
+    return { redirectToDetail };
   },
 });
 </script>

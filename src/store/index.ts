@@ -11,6 +11,7 @@ export default createStore<StoreState>({
       artists: [],
       albums: [],
       tracks: [],
+      artistDetailSelectedObj: [],
       searchSuggestionList: [
         "Drake",
         "Ed Sheeran",
@@ -22,7 +23,7 @@ export default createStore<StoreState>({
         "Eminem",
         "Taylor Swift",
         "BTS",
-      ], //fake endpoint to know the most listen artist!
+      ], //fake endpoint to know the most listen artist!,
     };
   },
   getters: {},
@@ -38,6 +39,9 @@ export default createStore<StoreState>({
     },
     setToken(state, token: AuthToken): void {
       state.token = token;
+    },
+    setArtistDetailSelected(state, artistDetailObj: Artist[] = []): void {
+      state.artistDetailSelectedObj = artistDetailObj;
     },
   },
   actions: {
@@ -73,6 +77,7 @@ export interface StoreState {
   albums: Album[];
   tracks: Track[];
   searchSuggestionList: Array<string>;
+  artistDetailSelectedObj: Artist[];
 }
 
 export interface AuthToken {
