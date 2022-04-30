@@ -1,6 +1,8 @@
 import { createStore } from "vuex";
 import { getAuth, search } from "@/api/spotify";
 
+// import { getParseSearch } from "@/computation/data-parser";
+
 export default createStore<StoreState>({
   state() {
     return {
@@ -56,6 +58,12 @@ export default createStore<StoreState>({
       commit("setArtists", artists?.items);
       commit("setAlbums", albums?.items);
       commit("setTracks", tracks?.items);
+      // const response = await search(state.token.value, query);
+      // const { newAlbumsParsedList, newArtistsParsedList, newTracksParsedList } =
+      //   getParseSearch(response);
+      // commit("setArtists", newArtistsParsedList);
+      // commit("setAlbums", newAlbumsParsedList);
+      // commit("setTracks", newTracksParsedList);
     },
     async authorize({ commit }): Promise<void> {
       const { expires_in, access_token } = await getAuth();
