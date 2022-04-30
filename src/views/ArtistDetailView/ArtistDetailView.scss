@@ -1,0 +1,154 @@
+.display-flex {
+  display: flex;
+}
+
+.margin-top {
+  margin-top: 15px;
+}
+
+.artist-container {
+  width: 30%;
+  justify-content: center;
+  display: grid;
+}
+
+.img {
+  width: 200px;
+  height: 250px;
+}
+
+.img-container {
+  width: auto;
+  height: auto;
+  display: flex;
+  img {
+    border-radius: 500px;
+    width: 100%;
+    max-width: 200px !important;
+    height: 100%;
+  }
+}
+.title-span {
+  font-size: 30px;
+  font-weight: 700;
+}
+.info-container {
+  margin-top: -50px;
+
+  .follower-div {
+    margin-top: 15px;
+  }
+
+  .button-container {
+    margin-top: 75px;
+  }
+}
+
+.songs-container {
+  width: 67%;
+  margin-right: 3%;
+  background-color: #26363d;
+  border-radius: 25px;
+  padding: 15px;
+}
+
+.genres-container {
+  width: 200px;
+}
+
+.genres-div {
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  border-radius: 16px;
+}
+
+//List Of Albums
+img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.title {
+  margin-bottom: 0.25rem;
+  color: #f07b14;
+  font-family: "Joti One", cursive;
+  font-size: 1.875em;
+  line-height: 1;
+  text-align: center;
+  ~ small {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+.items-list {
+  padding-left: 0; // normalize override
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 150px 1fr;
+  grid-template-rows: fit-content(100%);
+  list-style-type: none;
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  background: rgba(#26363d, 0.97);
+  transition: 250ms all ease-in-out;
+
+  .details {
+    font-size: 0.875em;
+    transition: 250ms all 380ms ease-in-out;
+    &:first-of-type {
+      margin-top: 1em;
+    }
+  }
+
+  img {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    height: auto;
+    max-width: 400px;
+    transition: 250ms all 250ms ease-in-out;
+  }
+}
+
+.modal-transition {
+  &-leave-active {
+    transition: opacity 200ms linear, transform 200ms cubic-bezier(0.64, 0.01, 0.67, 0.92);
+  }
+
+  &-enter-active {
+    transition: opacity 200ms linear, transform 200ms cubic-bezier(0.29, 0.15, 0.24, 0.97);
+  }
+
+  &-enter,
+  &-leave-to {
+    opacity: 0;
+    transform: scale(0);
+    img,
+    .details {
+      opacity: 0;
+    }
+  }
+}

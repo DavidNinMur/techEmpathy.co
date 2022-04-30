@@ -1,0 +1,52 @@
+<button class="goBack left" @click="redirectToHome()">Go Back</button>
+<div class="display-flex">
+  <div class="artist-container">
+    <div class="img">
+      <div class="img-container">
+        <img :src="artistSelectedRefObj.images[0].url" :alt="artistSelectedRefObj.name" />
+      </div>
+    </div>
+    <div class="info-container">
+      <div>
+        <span class="title-span">{{ artistSelectedRefObj.name }}</span>
+      </div>
+      <div class="follower-div">
+        <span class="follower-span">Have <strong>{{ artistSelectedRefObj?.followers?.total }}</strong> followers! </span>
+      </div>
+      <div v-if="artistSelectedRefObj.popularity >= 90 " class="follower-div">
+        <span class="follower-span"
+          >{{artistSelectedRefObj.name}} it's a superStar!! <br />
+          Have a {{artistSelectedRefObj.popularity}} of popularity!</span
+        >
+      </div>
+      <div class="follower-div">
+        <span class="follower-span">Is known for these genres: </span>
+      </div>
+      <div class="genres-container">
+        <div v-for="genres in artistSelectedRefObj.genres" :key="genres" class="genres-div">{{genres}}</div>
+      </div>
+      <div class="button-container">
+        <ButtonToSpotify :nameStrProp="artistSelectedRefObj.name" @onClickButton="redirectToArtistPageInSpotify" />
+      </div>
+    </div>
+  </div>
+
+  <div class="songs-container">
+    <span class="title-span">Albums of {{artistSelectedRefObj.name}}</span>
+    <ol class="items-list">
+      <li class="items-list__item" v-for="album in artistSelectedRefObj.albums">
+        <img :src="album.images[0].url" :alt="album.name" v-on:click="openModal($event, album)" />
+      </li>
+    </ol>
+
+    <transition name="modal-transition" v-if="showModalRefBool">
+      <div ref="modal" v-show="showModalRefBool" class="modal" @click="showModalRefBool = false" v-bind:style="{ transformOrigin: modalOriginRefStr }">
+        <img v-bind:src="albumSelectedRef.images[0].url" v-bind:alt="albumSelectedRef.name" />
+        <span class="details"><b>Album Title</b> {{ albumSelectedRef.name }}</span>
+        <span class="details"><b>Release Date</b> {{ albumSelectedRef.release_date }}</span>
+        <span class="details"><b>Album Length</b>: {{ albumSelectedRef.total_tracks }} songs</span>
+        <ButtonToSpotify class="margin-top" @onClickButton="redirectToAlbumPageInSpotify(albumSelectedRef)" />
+      </div>
+    </transition>
+  </div>
+</div>
