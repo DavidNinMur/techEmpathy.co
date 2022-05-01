@@ -13,8 +13,9 @@ export default defineComponent({
     const searchSuggestionRefList = ref(store.state.searchSuggestionList);
 
     const onQueryChange = () => {
-      if (searchByUserRefStr.value != "") {
+      if (searchByUserRefStr.value !== "") {
         store.dispatch("search", searchByUserRefStr.value);
+        emit("onQueryChange");
       } else {
         cleaningSearch();
       }

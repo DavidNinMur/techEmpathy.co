@@ -1,8 +1,7 @@
 <template src="./search-filter.html"></template>
 
 <script>
-import { defineComponent, ref } from "vue";
-import store from "@/store";
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "search-filter",

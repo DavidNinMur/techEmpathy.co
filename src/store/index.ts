@@ -1,7 +1,7 @@
 import { createStore } from "vuex";
 import { getAuth, search } from "@/api/spotify";
 
-// import { getParseSearch } from "@/computation/data-parser";
+import { getParseSearch } from "@/computation/data-parser";
 
 export default createStore<StoreState>({
   state() {
@@ -51,22 +51,12 @@ export default createStore<StoreState>({
       if (!state.token.value || state.token.expiresAt < Date.now()) {
         await dispatch("authorize");
       }
-      const { artists, albums, tracks } = await search(
-        state.token.value,
-        query
-      );
-      console.log("artists :>> ", artists);
-      console.log("albums  :>> ", albums);
-      console.log("tracks :>> ", tracks);
-      commit("setArtists", artists?.items);
-      commit("setAlbums", albums?.items);
-      commit("setTracks", tracks?.items);
-      // const response = await search(state.token.value, query);
-      // const { newAlbumsParsedList, newArtistsParsedList, newTracksParsedList } =
-      //   getParseSearch(response);
-      // commit("setArtists", newArtistsParsedList);
-      // commit("setAlbums", newAlbumsParsedList);
-      // commit("setTracks", newTracksParsedList);
+      const response = await search(state.token.value, query);
+      const { newAlbumsParsedList, newArtistsParsedList, newTracksParsedList } =
+        getParseSearch(response);
+      commit("setArtists", newArtistsParsedList);
+      commit("setAlbums", newAlbumsParsedList);
+      commit("setTracks", newTracksParsedList);
     },
     async authorize({ commit }): Promise<void> {
       const { expires_in, access_token } = await getAuth();
