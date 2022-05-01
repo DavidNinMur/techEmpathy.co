@@ -11,7 +11,7 @@
         <span class="title-span">{{ artistSelectedRefObj.name }}</span>
       </div>
       <div class="follower-div">
-        <span class="follower-span">Have <strong>{{ artistSelectedRefObjfollowers }}</strong> followers! </span>
+        <span class="follower-span">Have <strong>{{ artistSelectedRefObj.followers }}</strong> followers! </span>
       </div>
       <div v-if="artistSelectedRefObj.popularity >= 90 " class="follower-div">
         <span class="follower-span"
@@ -23,7 +23,7 @@
         <span class="follower-span">Is known for these genres: </span>
       </div>
       <div class="genres-container">
-        <div v-for="genres in artistSelectedRefObj.genres" :key="genres" class="genres-div">{{genres}}</div>
+        <div v-for="genres in artistSelectedRefObj.genericOfMusic" :key="genres" class="genres-div">{{genres}}</div>
       </div>
       <div class="button-container">
         <ButtonToSpotify :nameStrProp="artistSelectedRefObj.name" @onClickButton="redirectToArtistPageInSpotify" />

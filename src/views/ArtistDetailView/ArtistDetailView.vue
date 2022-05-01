@@ -22,10 +22,6 @@ export default defineComponent({
 
     onBeforeMount(() => {
       artistSelectedRefObj.value = store.state.artistDetailSelectedObj;
-      console.log(
-        "artistSelectedRefObj.value :>> ",
-        artistSelectedRefObj.value
-      );
     });
 
     const redirectToHome = () => {

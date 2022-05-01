@@ -53,8 +53,6 @@ export default defineComponent({
     };
 
     const onCleaningSearch = () => {
-      console.log("onCleaningSearch");
-
       store.commit("setArtists", []);
       store.commit("setAlbums", []);
       store.commit("setTracks", []);
