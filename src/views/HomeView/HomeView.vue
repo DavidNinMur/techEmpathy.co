@@ -9,18 +9,11 @@ import { setAlbumFromArtistSelected, getDataToRenderer } from "./helper.js";
 
 import SearchFilter from "@/components/filters/search-filter.vue";
 import SearchBox from "@/components/search-box.vue";
-
-import AlbumItem from "@/components/results/album-item.vue";
-import ArtistItem from "@/components/results/artist-item.vue";
-import TrackItem from "@/components/results/track-item.vue";
-import ListItem from "@/components/results/list-item.vue";
+import ListItem from "@/components/list-item/list-item.vue";
 
 export default defineComponent({
   name: "HomeView",
   components: {
-    TrackItem,
-    ArtistItem,
-    AlbumItem,
     ListItem,
     SearchBox,
     SearchFilter,
