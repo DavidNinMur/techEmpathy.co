@@ -1,0 +1,9 @@
+.list-item {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 12px;
+
+  &__cover {
+    width: 100%;
+  }
+}
