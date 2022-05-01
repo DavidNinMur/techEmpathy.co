@@ -9,21 +9,15 @@ export default defineComponent({
   props: {},
   setup(props, { emit }) {
     const searchByUserRefStr = ref("");
-    const placeholderRefStr = ref("Artist, songs or podcast");
+    const placeholderRefStr = ref("Artist, songs or albums");
     const searchSuggestionRefList = ref(store.state.searchSuggestionList);
 
     const onQueryChange = () => {
       if (searchByUserRefStr.value !== "") {
-        store.dispatch("search", searchByUserRefStr.value);
-        emit("onQueryChange");
+        emit("onQueryChange", searchByUserRefStr.value);
       } else {
-        cleaningSearch();
+        emit("onCleaningSearch");
       }
-    };
-    const cleaningSearch = () => {
-      store.commit("setArtists", {});
-      store.commit("setAlbums", {});
-      store.commit("setTracks", {});
     };
 
     return {

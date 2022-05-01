@@ -3,11 +3,9 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import { useRouter } from "vue-router";
-import { mapState } from "vuex";
 import store from "@/store";
 
-import { setAlbumFromArtistSelected } from "./helper.js";
-import { cloneObj } from "@/computation/utils.js";
+import { setAlbumFromArtistSelected, getDataToRenderer } from "./helper.js";
 
 import SearchFilter from "@/components/filters/search-filter.vue";
 import SearchBox from "@/components/search-box.vue";
@@ -50,8 +48,29 @@ export default defineComponent({
       router.push("/artist-detail");
     };
 
+    const getDataToRender = () => {
+      dataToRendererRefList.value = getDataToRenderer({
+        store,
+        actualFilterRefStr: actualFilterRefStr.value,
+      });
+    };
+
     const onClickArtist = (artistObj: any) => {
       setArtistSelected({ artistObj });
+    };
+
+    const onCleaningSearch = () => {
+      console.log("onCleaningSearch");
+
+      store.commit("setArtists", []);
+      store.commit("setAlbums", []);
+      store.commit("setTracks", []);
+      getDataToRender();
+    };
+
+    const onQueryChange = async (searchStr: string) => {
+      await store.dispatch("search", searchStr);
+      getDataToRender();
     };
 
     const onSelectFilter = (valueStr: string) => {
@@ -62,39 +81,7 @@ export default defineComponent({
           actualFilterRefStr.value = valueStr;
         }
       });
-      getDataToRenderer();
-    };
-
-    const getDataToRenderer = () => {
-      let newDataToShowList: any[] = [];
-
-      const albumsList = cloneObj(store.state.albums);
-      const artistList = cloneObj(store.state.artists);
-      const tracksList = cloneObj(store.state.tracks);
-
-      switch (actualFilterRefStr.value) {
-        case "all":
-          newDataToShowList.push(
-            albumsList.concat(artistList.concat(tracksList))
-          );
-          break;
-
-        case "album":
-          newDataToShowList.push(albumsList);
-          break;
-
-        case "artist":
-          newDataToShowList.push(artistList);
-          break;
-
-        case "track":
-          newDataToShowList.push(tracksList);
-          break;
-
-        default:
-          break;
-      }
-      dataToRendererRefList.value = newDataToShowList;
+      getDataToRender();
     };
 
     return {
@@ -105,6 +92,8 @@ export default defineComponent({
       store,
 
       onClickArtist,
+      onCleaningSearch,
+      onQueryChange,
       onSelectFilter,
 
       getDataToRenderer,
