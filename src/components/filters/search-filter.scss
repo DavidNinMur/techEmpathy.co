@@ -1,22 +1,23 @@
+@import "@/assets/_colors.scss";
+
 .filter-button {
   border: none;
-  background-color: #26363d;
+  background-color: $background-color;
   border-radius: 3px;
-  font-family: Arial;
   color: #ffffff;
   padding: 5px 10px 5px 10px;
   text-decoration: none;
   margin: 5px;
   border-radius: 5px;
   &:hover {
-    background-color: #3c5560;
+    background-color: $hover-color;
   }
 }
 
 .filter-button-active {
-  background-color: #0e455f;
+  background-color: $active-color;
   text-decoration: none;
   &:hover {
-    background-color: #0e455f;
+    background-color: $active-color;
   }
 }

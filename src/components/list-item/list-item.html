@@ -1,7 +1,10 @@
 <article class="list-item" @click="onClickInItem(item)">
-  <span class="list-item__kind">{{item.type}}</span>
   <header class="list-item__header">
     <img class="list-item__cover" :alt="`${item.name} %{item.type} cover`" :src="item.img" />
   </header>
   <h3 class="list-item__name">{{ item.name }}</h3>
+  <span v-if="item.artist && item.type !== 'artist'" class="list-item__kind">{{item.type}} of {{item.artist[0].name}}</span>
+  <span v-if="item.type === 'album'" class="list-item__kind">Released on {{item.releaseDate}}</span>
+  <span v-if="item.type === 'album'" class="list-item__kind">Had {{item.numberOfTracks}} songs</span>
+  <span v-if="item.type === 'track'" class="list-item__kind">Duration {{item.duration}}</span>
 </article>

@@ -28,16 +28,31 @@ export const getAlbumsParsed = ({ albumsList }) => {
       newItemObj["type"] = itemObj.type ? itemObj.type : "";
       newItemObj["album_type"] = itemObj.album_type ? itemObj.album_type : "";
       newItemObj["name"] = itemObj.name ? itemObj.name : "";
-      newItemObj["releaseDate"] = itemObj.release_date ? itemObj.release_date : "";
-      newItemObj["numberOfTracks"] = itemObj.release_date ? itemObj.release_date : "";
-      newItemObj["linkToOpen"] = itemObj.external_urls?.spotify ? itemObj.external_urls?.spotify : "";
+      newItemObj["releaseDate"] = itemObj.release_date
+        ? itemObj.release_date
+        : "";
+      newItemObj["numberOfTracks"] = itemObj.total_tracks
+        ? itemObj.total_tracks
+        : "";
+      newItemObj["linkToOpen"] = itemObj.external_urls?.spotify
+        ? itemObj.external_urls?.spotify
+        : "";
 
       if (itemObj.images) {
         if (itemObj.images.length >= 1) {
-          newItemObj["img"] = itemObj.images[0]?.url ? itemObj.images[0]?.url : "";
+          newItemObj["img"] = itemObj.images[0]?.url
+            ? itemObj.images[0]?.url
+            : "";
         }
       } else {
         newItemObj["img"] = "";
+      }
+
+      if (itemObj.artists.length >= 1) {
+        let albumArtistsToParse = { items: itemObj.artists };
+        newItemObj["artist"] = getArtistParsed({
+          artistList: albumArtistsToParse
+        });
       }
 
       newAlbumsParsedList.push(newItemObj);
@@ -57,13 +72,19 @@ export const getArtistParsed = ({ artistList }) => {
       newItemObj["type"] = itemObj.type ? itemObj.type : "";
       newItemObj["popularity"] = itemObj.popularity ? itemObj.popularity : "";
       newItemObj["name"] = itemObj.name ? itemObj.name : "";
-      newItemObj["linkToOpen"] = itemObj.external_urls?.spotify ? itemObj.external_urls?.spotify : "";
+      newItemObj["linkToOpen"] = itemObj.external_urls?.spotify
+        ? itemObj.external_urls?.spotify
+        : "";
       newItemObj["genericOfMusic"] = itemObj.genres ? itemObj.genres : "";
-      newItemObj["followers"] = itemObj.followers?.total ? itemObj.followers?.total : "";
+      newItemObj["followers"] = itemObj.followers?.total
+        ? itemObj.followers?.total
+        : "";
 
       if (itemObj.images) {
         if (itemObj.images.length >= 1) {
-          newItemObj["img"] = itemObj.images[0]?.url ? itemObj.images[0]?.url : "";
+          newItemObj["img"] = itemObj.images[0]?.url
+            ? itemObj.images[0]?.url
+            : "";
         }
       } else {
         newItemObj["img"] = "";
@@ -86,19 +107,28 @@ export const getTracksParsed = ({ tracksList }) => {
       newItemObj["type"] = itemObj.type ? itemObj.type : "";
       newItemObj["popularity"] = itemObj.popularity ? itemObj.popularity : "";
       newItemObj["name"] = itemObj.name ? itemObj.name : "";
-      newItemObj["linkToOpen"] = itemObj.external_urls?.spotify ? itemObj.external_urls?.spotify : "";
+      newItemObj["linkToOpen"] = itemObj.external_urls?.spotify
+        ? itemObj.external_urls?.spotify
+        : "";
       newItemObj["explicit"] = itemObj.explicit ? itemObj.explicit : "";
-      newItemObj["duration"] = itemObj.duration_ms ? milisToMinutesAndSeconds(itemObj.duration_ms) : "";
-
-      if (itemObj.album.length >= 1) {
-        newItemObj["img"] = itemObj.album.images[0]?.url ? itemObj.album.images[0]?.url : "";
-      }
+      newItemObj["duration"] = itemObj.duration_ms
+        ? milisToMinutesAndSeconds(itemObj.duration_ms)
+        : "";
 
       if (itemObj.artists.length >= 1) {
         let trackAlbumsToParse = { items: [itemObj.album] };
-        let trackArtistsToParse = { items: [itemObj.artists] };
-        newItemObj["album"] = getAlbumsParsed({ albumsList: trackAlbumsToParse });
-        newItemObj["artist"] = getArtistParsed({ artistList: trackArtistsToParse });
+        let trackArtistsToParse = { items: itemObj.artists };
+        newItemObj["album"] = getAlbumsParsed({
+          albumsList: trackAlbumsToParse
+        });
+        newItemObj["artist"] = getArtistParsed({
+          artistList: trackArtistsToParse
+        });
+      }
+      if (itemObj.album.images.length >= 1) {
+        newItemObj["img"] = itemObj.album.images[0]?.url
+          ? itemObj.album.images[0]?.url
+          : "";
       }
 
       newTracksParsedList.push(newItemObj);

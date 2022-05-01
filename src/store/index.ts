@@ -54,6 +54,10 @@ export default createStore<StoreState>({
       const response = await search(state.token.value, query);
       const { newAlbumsParsedList, newArtistsParsedList, newTracksParsedList } =
         getParseSearch(response);
+
+      console.log("newArtistsParsedList :>> ", newArtistsParsedList);
+      console.log("newAlbumsParsedList  :>> ", newAlbumsParsedList);
+      console.log("newTracksParsedList :>> ", newTracksParsedList);
       commit("setArtists", newArtistsParsedList);
       commit("setAlbums", newAlbumsParsedList);
       commit("setTracks", newTracksParsedList);
