@@ -8,7 +8,7 @@ import store from "@/store";
 import { setAlbumFromArtistSelected, getDataToRenderer } from "./helper.js";
 
 import SearchFilter from "@/components/filters/search-filter.vue";
-import SearchBox from "@/components/search-box.vue";
+import SearchBox from "@/components/search-box/search-box.vue";
 import ListItem from "@/components/list-item/list-item.vue";
 
 export default defineComponent({

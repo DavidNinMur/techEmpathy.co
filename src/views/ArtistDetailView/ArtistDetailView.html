@@ -3,7 +3,7 @@
   <div class="artist-container">
     <div class="img">
       <div class="img-container">
-        <img :src="artistSelectedRefObj.images[0].url" :alt="artistSelectedRefObj.name" />
+        <img :src="artistSelectedRefObj.img" :alt="artistSelectedRefObj.name" />
       </div>
     </div>
     <div class="info-container">
@@ -11,7 +11,7 @@
         <span class="title-span">{{ artistSelectedRefObj.name }}</span>
       </div>
       <div class="follower-div">
-        <span class="follower-span">Have <strong>{{ artistSelectedRefObj?.followers?.total }}</strong> followers! </span>
+        <span class="follower-span">Have <strong>{{ artistSelectedRefObjfollowers }}</strong> followers! </span>
       </div>
       <div v-if="artistSelectedRefObj.popularity >= 90 " class="follower-div">
         <span class="follower-span"

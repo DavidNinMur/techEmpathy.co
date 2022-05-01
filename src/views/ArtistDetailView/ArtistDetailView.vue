@@ -33,7 +33,7 @@ export default defineComponent({
     };
 
     const redirectToArtistPageInSpotify = () => {
-      window.open(artistSelectedRefObj.value?.external_urls.spotify, "_blank");
+      window.open(artistSelectedRefObj.value.linkToOpen, "_blank");
     };
 
     const redirectToAlbumPageInSpotify = (album: any) => {
