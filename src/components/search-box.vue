@@ -14,7 +14,7 @@ export default defineComponent({
 
     const onQueryChange = () => {
       if (searchByUserRefStr.value != "") {
-        store.dispatch("search", searchByUserRefStr);
+        store.dispatch("search", searchByUserRefStr.value);
       } else {
         cleaningSearch();
       }

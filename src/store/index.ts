@@ -55,6 +55,9 @@ export default createStore<StoreState>({
         state.token.value,
         query
       );
+      console.log("artists :>> ", artists);
+      console.log("albums  :>> ", albums);
+      console.log("tracks :>> ", tracks);
       commit("setArtists", artists?.items);
       commit("setAlbums", albums?.items);
       commit("setTracks", tracks?.items);

@@ -1,0 +1,4 @@
+<div>
+  <button v-for="option in optionListProp" :key="option" :class="{'filter-button-active': option.selectedBool}" class="filter-button" @click="onSelectFilter(option)">{{option.nameStr}}</button>
+</div>
+{{optionListProp}}
