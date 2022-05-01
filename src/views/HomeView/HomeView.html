@@ -1,6 +1,6 @@
 <div class="home">
   <SearchBox @onQueryChange="onQueryChange" @onCleaningSearch="onCleaningSearch" />
-  <SearchFilter v-if="store.state.albums.length >= 1" class="margin-top" :optionListProp="filterRefList" @onSelectFilter="onSelectFilter" />
+  <SearchFilter v-show="userHaveDoneASearch" class="margin-top" :optionListProp="filterRefList" @onSelectFilter="onSelectFilter" />
   <ul class="home__results-list" v-if="dataToRendererRefList">
     <li class="home__result-item" v-for="dataObj in dataToRendererRefList[0]" :key="dataObj.id">
       <ListItem :item="dataObj" @onClickArtist="onClickArtist" />

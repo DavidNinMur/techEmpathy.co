@@ -1,10 +1,11 @@
 <template src="./HomeView.html"></template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, onBeforeMount, ref } from "vue";
 import { useRouter } from "vue-router";
 import store from "@/store";
 
+import { userHaveDoneASearch } from "@/computation/utils.js";
 import { setAlbumFromArtistSelected, getDataToRenderer } from "./helper.js";
 
 import SearchFilter from "@/components/filters/search-filter.vue";
@@ -20,8 +21,14 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     const router = useRouter();
-    const actualFilterRefStr = ref("all");
+    const actualFilterRefStr = ref(store.state.filterByUser);
     const dataToRendererRefList = ref();
+
+    onBeforeMount(() => {
+      if (userHaveDoneASearch({ store })) {
+        onSelectFilter(actualFilterRefStr.value);
+      }
+    });
 
     const filterRefList = ref([
       { nameStr: "All", selectedBool: true, valueStr: "all" },
@@ -53,6 +60,7 @@ export default defineComponent({
     };
 
     const onCleaningSearch = () => {
+      store.commit("setQueryOfUser", "");
       store.commit("setArtists", []);
       store.commit("setAlbums", []);
       store.commit("setTracks", []);
@@ -61,6 +69,7 @@ export default defineComponent({
 
     const onQueryChange = async (searchStr: string) => {
       await store.dispatch("search", searchStr);
+      store.commit("setQueryOfUser", searchStr);
       getDataToRender();
     };
 
@@ -72,6 +81,7 @@ export default defineComponent({
           actualFilterRefStr.value = valueStr;
         }
       });
+      store.commit("setFilterByUser", actualFilterRefStr.value);
       getDataToRender();
     };
 
@@ -88,6 +98,7 @@ export default defineComponent({
       onSelectFilter,
 
       getDataToRenderer,
+      userHaveDoneASearch,
     };
   },
 });

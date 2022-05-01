@@ -13,6 +13,8 @@ export default createStore<StoreState>({
       artists: [],
       albums: [],
       tracks: [],
+      queryOfUser: "",
+      filterByUser: "",
       artistDetailSelectedObj: [],
       searchSuggestionList: [
         "Drake",
@@ -44,6 +46,12 @@ export default createStore<StoreState>({
     },
     setArtistDetailSelected(state, artistDetailObj: Artist[] = []): void {
       state.artistDetailSelectedObj = artistDetailObj;
+    },
+    setQueryOfUser(state, queryOfUser: string): void {
+      state.queryOfUser = queryOfUser;
+    },
+    setFilterByUser(state, filterByUser: string): void {
+      state.filterByUser = filterByUser;
     },
   },
   actions: {
@@ -80,6 +88,8 @@ export interface StoreState {
   tracks: Track[];
   searchSuggestionList: Array<string>;
   artistDetailSelectedObj: Artist[];
+  queryOfUser: string;
+  filterByUser: string;
 }
 
 export interface AuthToken {

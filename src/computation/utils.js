@@ -3,3 +3,12 @@ export const cloneObj = (objToClone) => {
 
   return newObjCloned;
 };
+
+export const userHaveDoneASearch = ({ store }) => {
+  console.log("store.state.queryOfUser :>> ", store.state.queryOfUser);
+  if (store.state.queryOfUser !== "") {
+    return true;
+  } else {
+    return false;
+  }
+};
