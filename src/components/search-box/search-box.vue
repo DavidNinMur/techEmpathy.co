@@ -1,8 +1,10 @@
 <template src="./search-box.html"></template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, onBeforeMount } from "vue";
 import store from "@/store";
+
+import { userHaveDoneASearch } from "@/computation/utils.js";
 
 export default defineComponent({
   name: "search-box",
@@ -11,6 +13,12 @@ export default defineComponent({
     const searchByUserRefStr = ref("");
     const placeholderRefStr = ref("Artist, songs or albums");
     const searchSuggestionRefList = ref(store.state.searchSuggestionList);
+
+    onBeforeMount(() => {
+      if (userHaveDoneASearch({ store })) {
+        searchByUserRefStr.value = store.state.queryOfUser;
+      }
+    });
 
     const onQueryChange = () => {
       if (searchByUserRefStr.value !== "") {
