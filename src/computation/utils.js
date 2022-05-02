@@ -5,7 +5,6 @@ export const cloneObj = (objToClone) => {
 };
 
 export const userHaveDoneASearch = ({ store }) => {
-  console.log("store.state.queryOfUser :>> ", store.state.queryOfUser);
   if (store.state.queryOfUser !== "") {
     return true;
   } else {

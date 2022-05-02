@@ -24,9 +24,12 @@ export default defineComponent({
     const actualFilterRefStr = ref(store.state.filterByUser);
     const dataToRendererRefList = ref();
 
+    // To load from artist-detail the last search
     onBeforeMount(() => {
       if (userHaveDoneASearch({ store })) {
         onSelectFilter(actualFilterRefStr.value);
+      } else {
+        onSelectFilter("all");
       }
     });
 
