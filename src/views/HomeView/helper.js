@@ -1,5 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { getAlbumFromArtist } from "@/api/spotify";
+import {
+  getAlbumFromArtist,
+  getInfoFromUser,
+  getTracksFromUser,
+  getArtistFromUser,
+} from "@/api/spotify";
+
+import { getAlbumsParsed } from "@/computation/data-parser";
 
 import { cloneObj } from "@/computation/utils.js";
 
@@ -11,8 +18,23 @@ export const setAlbumFromArtistSelected = async ({
     store.state.token.value,
     artistSelectedObj.id
   );
-  const allAlbumsByUserSearchObj = JSON.parse(JSON.stringify(response));
-  return allAlbumsByUserSearchObj.items;
+  const allAlbumsByUserSearchObj = getAlbumsParsed({ albumsList: response });
+  return allAlbumsByUserSearchObj;
+};
+
+export const setUserInfo = async ({ store, infoStr }) => {
+  let response;
+
+  if (infoStr === "artists") {
+    response = await getArtistFromUser(store.state.token.value, infoStr);
+  } else if (infoStr === "tracks") {
+    response = await getTracksFromUser(store.state.token.value, infoStr);
+  } else if (infoStr === "infoUser") {
+    response = await getInfoFromUser(store.state.token.value, infoStr);
+  }
+
+  const allUserInfo = JSON.parse(JSON.stringify(response));
+  return allUserInfo.items;
 };
 
 export const getDataToRenderer = ({ store, actualFilterRefStr }) => {
