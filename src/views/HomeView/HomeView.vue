@@ -25,13 +25,14 @@ export default defineComponent({
     SearchBox,
     SearchFilter,
   },
-  setup(props, { emit }) {
+  setup() {
     const router = useRouter();
     const actualFilterRefStr = ref(store.state.filterByUser);
     const dataToRendererRefList = ref();
     const userFavArtistsDataToRendererRefList = ref();
     const userFavTracksDataToRendererRefList = ref();
     const userInfoDataToRendererRefList = ref();
+    const componentRenderedBoolRef = ref(false);
 
     // To load from artist-detail the last search
     onBeforeMount(async () => {
@@ -42,6 +43,8 @@ export default defineComponent({
       } else {
         onSelectFilter("all");
       }
+
+      componentRenderedBoolRef.value = true;
     });
 
     const filterRefList = ref([
@@ -122,6 +125,8 @@ export default defineComponent({
       userFavArtistsDataToRendererRefList,
       userFavTracksDataToRendererRefList,
       userInfoDataToRendererRefList,
+
+      componentRenderedBoolRef,
 
       store,
 

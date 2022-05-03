@@ -1,4 +1,4 @@
-<div class="home">
+<div class="home" v-if="componentRenderedBoolRef">
   <SearchBox @onQueryChange="onQueryChange" @onCleaningSearch="onCleaningSearch" />
   <SearchFilter v-if="store.state.queryOfUser" class="margin-top" :optionListProp="filterRefList" @onSelectFilter="onSelectFilter" />
   <ul class="home__results-list" v-if="dataToRendererRefList">
@@ -6,7 +6,7 @@
       <ListItem :item="dataObj" @onClickArtist="onClickArtist" />
     </li>
   </ul>
-  <span v-if="dataToRendererRefList.length === 0"> Hi {{userInfoDataToRendererRefList[0].display_name}}. This it's your favorites artists and tracks!! </span>
+  <span v-if="userInfoDataToRendererRefList"> Hi {{userInfoDataToRendererRefList[0].display_name}}. This it's your favorites artists and tracks!! </span>
   <div v-if="dataToRendererRefList.length === 0" class="info-user-container">
     <div class="info-user-item" v-for="dataObj in userFavArtistsDataToRendererRefList">
       <ListItem :item="dataObj" @onClickArtist="onClickArtist" />
