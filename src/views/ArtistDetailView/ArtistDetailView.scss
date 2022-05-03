@@ -104,6 +104,15 @@ img {
   list-style-type: none;
 }
 
+.items-list__item {
+  display: grid;
+  justify-content: center;
+  margin-top: 5px;
+  img {
+    margin-bottom: 10px;
+  }
+}
+
 .modal {
   display: flex;
   justify-content: center;
@@ -122,9 +131,12 @@ img {
   .details {
     font-size: 0.875em;
     transition: 250ms all 380ms ease-in-out;
-    &:first-of-type {
-      margin-top: 1em;
-    }
+
+    margin: 0.5em;
+  }
+
+  .margin {
+    margin: 10px;
   }
 
   img {

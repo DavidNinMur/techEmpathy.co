@@ -6,4 +6,15 @@
       <ListItem :item="dataObj" @onClickArtist="onClickArtist" />
     </li>
   </ul>
+  <span v-if="dataToRendererRefList.length === 0"> Hi {{userInfoDataToRendererRefList[0].display_name}}. This it's your favorites artists and tracks!! </span>
+  <div v-if="dataToRendererRefList.length === 0" class="info-user-container">
+    <div class="info-user-item" v-for="dataObj in userFavArtistsDataToRendererRefList">
+      <ListItem :item="dataObj" @onClickArtist="onClickArtist" />
+    </div>
+  </div>
+  <div v-if="dataToRendererRefList.length === 0" class="info-user-container">
+    <div class="info-user-item" v-for="dataObj in userFavTracksDataToRendererRefList">
+      <ListItem :item="dataObj" @onClickArtist="onClickArtist" />
+    </div>
+  </div>
 </div>

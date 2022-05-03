@@ -4,11 +4,22 @@
   display: flex;
   flex-flow: column nowrap;
   gap: 12px;
-  background-color: $hover-color;
+  background-color: $background-color;
   border-radius: 10px;
-  padding: 5px;
+  padding: 10px;
+
+  img {
+    border-radius: 10px;
+  }
 
   &__cover {
     width: 100%;
   }
+}
+
+.list-item-hover:hover {
+  background-color: $hover-color;
+  -webkit-transition: background 0.5s; /* For Safari 3.0 to 6.0 */
+  transition: background 0.5s; /* For modern browsers */
+  cursor: pointer;
 }

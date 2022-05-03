@@ -32,19 +32,21 @@
   </div>
 
   <div class="songs-container">
-    <span class="title-span">Albums of {{artistSelectedRefObj.name}}</span>
-    <ol class="items-list">
+    <span class="title-span margin-bottom">Albums of {{artistSelectedRefObj.name}}</span>
+    <ol class="items-list margin-top">
       <li class="items-list__item" v-for="album in artistSelectedRefObj.albums">
-        <img :src="album.images[0].url" :alt="album.name" v-on:click="openModal($event, album)" />
+        <img :src="album.img" :alt="album.name" v-on:click="openModal($event, album)" />
+        <span class="details"><b>Type</b> {{ album.album_type }}</span>
       </li>
     </ol>
 
     <transition name="modal-transition" v-if="showModalRefBool">
       <div ref="modal" v-show="showModalRefBool" class="modal" @click="showModalRefBool = false" v-bind:style="{ transformOrigin: modalOriginRefStr }">
-        <img v-bind:src="albumSelectedRef.images[0].url" v-bind:alt="albumSelectedRef.name" />
-        <span class="details"><b>Album Title</b> {{ albumSelectedRef.name }}</span>
-        <span class="details"><b>Release Date</b> {{ albumSelectedRef.release_date }}</span>
-        <span class="details"><b>Album Length</b>: {{ albumSelectedRef.total_tracks }} songs</span>
+        <span class="title-span"><b>Title: </b> {{ albumSelectedRef.name }}</span>
+        <img class="margin" v-bind:src="albumSelectedRef.img" v-bind:alt="albumSelectedRef.name" />
+        <span class="details"><b>Type</b> {{ albumSelectedRef.album_type }}</span>
+        <span class="details"><b>Release Date</b> {{ albumSelectedRef.releaseDate }}</span>
+        <span class="details"><b>Album Length</b>: {{ albumSelectedRef.numberOfTracks }} songs</span>
         <ButtonToSpotify class="margin-top" @onClickButton="redirectToAlbumPageInSpotify(albumSelectedRef)" />
       </div>
     </transition>

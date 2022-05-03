@@ -8,6 +8,17 @@
   }
 }
 
+.info-user-container {
+  display: flex;
+  justify-content: center;
+
+  .info-user-item {
+    width: 200px;
+    margin: 30px;
+    justify-content: center;
+  }
+}
+
 .margin-top {
   margin-top: 10px;
 }
