@@ -33,6 +33,18 @@ export const search = (
   ).then(parseResponse);
 };
 
+export const getInfoFromUser = async (): Promise<any> => {
+  return fetch(`/fixtures/temp/fakeResponseMe.json`).then(parseResponse);
+};
+
+export const getTracksFromUser = async (): Promise<any> => {
+  return fetch(`/fixtures/temp/fakeResponseTracks.json`).then(parseResponse);
+};
+
+export const getArtistFromUser = async (): Promise<any> => {
+  return fetch(`/fixtures/temp/fakeResponseArtists.json`).then(parseResponse);
+};
+
 export const getAlbumFromArtist = (
   token: string,
   query: string
@@ -53,6 +65,6 @@ function parseResponse(response: Response): Promise<any> {
 
 interface SpotifyAuthResponse {
   access_token: string;
-  expires_in: 3600;
+  expires_in: 3600000;
   token_type: string;
 }

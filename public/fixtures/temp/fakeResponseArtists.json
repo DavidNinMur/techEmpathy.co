@@ -1,0 +1,175 @@
+{
+  "items": [
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/0du5cEVh5yTK9QJze8zA0C"
+      },
+      "followers": {
+        "href": null,
+        "total": 40073831
+      },
+      "genres": ["dance pop", "pop"],
+      "href": "https://api.spotify.com/v1/artists/0du5cEVh5yTK9QJze8zA0C",
+      "id": "0du5cEVh5yTK9QJze8zA0C",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/ab6761610000e5ebc36dd9eb55fb0db4911f25dd",
+          "width": 640
+        },
+        {
+          "height": 320,
+          "url": "https://i.scdn.co/image/ab67616100005174c36dd9eb55fb0db4911f25dd",
+          "width": 320
+        },
+        {
+          "height": 160,
+          "url": "https://i.scdn.co/image/ab6761610000f178c36dd9eb55fb0db4911f25dd",
+          "width": 160
+        }
+      ],
+      "name": "Bruno Mars",
+      "popularity": 93,
+      "type": "artist",
+      "uri": "spotify:artist:0du5cEVh5yTK9QJze8zA0C"
+    },
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/2IMZYfNi21MGqxopj9fWx8"
+      },
+      "followers": {
+        "href": null,
+        "total": 3610449
+      },
+      "genres": ["r&b en espanol", "spanish hip hop", "trap latino", "urbano espanol"],
+      "href": "https://api.spotify.com/v1/artists/2IMZYfNi21MGqxopj9fWx8",
+      "id": "2IMZYfNi21MGqxopj9fWx8",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/ab6761610000e5eb7dd1854e5f591af4c17b1d69",
+          "width": 640
+        },
+        {
+          "height": 320,
+          "url": "https://i.scdn.co/image/ab676161000051747dd1854e5f591af4c17b1d69",
+          "width": 320
+        },
+        {
+          "height": 160,
+          "url": "https://i.scdn.co/image/ab6761610000f1787dd1854e5f591af4c17b1d69",
+          "width": 160
+        }
+      ],
+      "name": "Rels B",
+      "popularity": 84,
+      "type": "artist",
+      "uri": "spotify:artist:2IMZYfNi21MGqxopj9fWx8"
+    },
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/77ziqFxp5gaInVrF2lj4ht"
+      },
+      "followers": {
+        "href": null,
+        "total": 10571789
+      },
+      "genres": ["latin", "panamanian pop", "reggaeton", "trap latino"],
+      "href": "https://api.spotify.com/v1/artists/77ziqFxp5gaInVrF2lj4ht",
+      "id": "77ziqFxp5gaInVrF2lj4ht",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/ab6761610000e5eba760b68c06ca08e6dce6b45c",
+          "width": 640
+        },
+        {
+          "height": 320,
+          "url": "https://i.scdn.co/image/ab67616100005174a760b68c06ca08e6dce6b45c",
+          "width": 320
+        },
+        {
+          "height": 160,
+          "url": "https://i.scdn.co/image/ab6761610000f178a760b68c06ca08e6dce6b45c",
+          "width": 160
+        }
+      ],
+      "name": "Sech",
+      "popularity": 89,
+      "type": "artist",
+      "uri": "spotify:artist:77ziqFxp5gaInVrF2lj4ht"
+    },
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+      },
+      "followers": {
+        "href": null,
+        "total": 5322717
+      },
+      "genres": ["r&b en espanol"],
+      "href": "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+      "id": "7ltDVBr6mKbRvohxheJ9h1",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/ab6761610000e5ebd7bb678bef6d2f26110cae49",
+          "width": 640
+        },
+        {
+          "height": 320,
+          "url": "https://i.scdn.co/image/ab67616100005174d7bb678bef6d2f26110cae49",
+          "width": 320
+        },
+        {
+          "height": 160,
+          "url": "https://i.scdn.co/image/ab6761610000f178d7bb678bef6d2f26110cae49",
+          "width": 160
+        }
+      ],
+      "name": "ROSALÍA",
+      "popularity": 88,
+      "type": "artist",
+      "uri": "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+    },
+    {
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/2R21vXR83lH98kGeO99Y66"
+      },
+      "followers": {
+        "href": null,
+        "total": 21498730
+      },
+      "genres": ["latin", "reggaeton", "reggaeton flow", "trap boricua", "trap latino"],
+      "href": "https://api.spotify.com/v1/artists/2R21vXR83lH98kGeO99Y66",
+      "id": "2R21vXR83lH98kGeO99Y66",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/ab6761610000e5ebc5c589b667f600c299552ee5",
+          "width": 640
+        },
+        {
+          "height": 320,
+          "url": "https://i.scdn.co/image/ab67616100005174c5c589b667f600c299552ee5",
+          "width": 320
+        },
+        {
+          "height": 160,
+          "url": "https://i.scdn.co/image/ab6761610000f178c5c589b667f600c299552ee5",
+          "width": 160
+        }
+      ],
+      "name": "Anuel AA",
+      "popularity": 90,
+      "type": "artist",
+      "uri": "spotify:artist:2R21vXR83lH98kGeO99Y66"
+    }
+  ],
+  "total": 50,
+  "limit": 5,
+  "offset": 5,
+  "href": "https://api.spotify.com/v1/me/top/artists?limit=5&offset=5",
+  "previous": "https://api.spotify.com/v1/me/top/artists?limit=5&offset=0",
+  "next": "https://api.spotify.com/v1/me/top/artists?limit=5&offset=10"
+}
