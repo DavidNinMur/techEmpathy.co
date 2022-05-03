@@ -20,7 +20,7 @@ export default defineComponent({
     ...mapActions(["authorize"]),
   },
   mounted(): void {
-    this.authorize();
+    // this.authorize();
   },
 });
 </script>

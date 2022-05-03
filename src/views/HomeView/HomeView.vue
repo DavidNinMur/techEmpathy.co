@@ -5,8 +5,14 @@ import { defineComponent, onBeforeMount, ref } from "vue";
 import { useRouter } from "vue-router";
 import store from "@/store";
 
+import { getArtistParsed, getTracksParsed } from "@/computation/data-parser";
 import { userHaveDoneASearch } from "@/computation/utils.js";
-import { setAlbumFromArtistSelected, getDataToRenderer } from "./helper.js";
+
+import {
+  setAlbumFromArtistSelected,
+  getDataToRenderer,
+  setUserInfo,
+} from "./helper.js";
 
 import SearchFilter from "@/components/filters/search-filter.vue";
 import SearchBox from "@/components/search-box/search-box.vue";
@@ -23,9 +29,14 @@ export default defineComponent({
     const router = useRouter();
     const actualFilterRefStr = ref(store.state.filterByUser);
     const dataToRendererRefList = ref();
+    const userFavArtistsDataToRendererRefList = ref();
+    const userFavTracksDataToRendererRefList = ref();
+    const userInfoDataToRendererRefList = ref();
 
     // To load from artist-detail the last search
-    onBeforeMount(() => {
+    onBeforeMount(async () => {
+      await store.dispatch("authorize");
+      getInfoByUser();
       if (userHaveDoneASearch({ store })) {
         onSelectFilter(actualFilterRefStr.value);
       } else {
@@ -58,6 +69,22 @@ export default defineComponent({
       });
     };
 
+    const getInfoByUser = async () => {
+      const artistsList = await setUserInfo({ store, infoStr: "artists" });
+      const tracks = await setUserInfo({ store, infoStr: "tracks" });
+      userInfoDataToRendererRefList.value = await setUserInfo({
+        store,
+        infoStr: "infoUser",
+      });
+
+      userFavArtistsDataToRendererRefList.value = getArtistParsed({
+        artistList: { items: artistsList },
+      });
+
+      userFavTracksDataToRendererRefList.value = getTracksParsed({
+        tracksList: { items: tracks },
+      });
+    };
     const onClickArtist = (artistObj: any) => {
       setArtistSelected({ artistObj });
     };
@@ -92,6 +119,9 @@ export default defineComponent({
       filterRefList,
       actualFilterRefStr,
       dataToRendererRefList,
+      userFavArtistsDataToRendererRefList,
+      userFavTracksDataToRendererRefList,
+      userInfoDataToRendererRefList,
 
       store,
 
